@@ -41,3 +41,39 @@ class Stack
         @currPos == -1
     end
 end
+
+#Queueing
+class Queue
+    def initialize(size)
+        @size = size
+        @store = Array.new(size)
+        @num = 0
+    end
+            
+    def dequeue
+        return nil if @num == 0
+        @num = @num.pred
+        @store.delete_at(@num)
+    end
+              
+    def enqueue(element)
+        return nil if full? or element.nil?
+        @num = @num.succ
+        @store.unshift(element)
+        self
+    end
+                
+    def size
+        @size
+    end
+
+    private
+
+    def full?
+        @num == @size
+    end
+                      
+    def empty?
+        @num == 0
+    end
+end
